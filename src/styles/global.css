@@ -1,0 +1,57 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  /* The Foundation: Sacred Obsidian / Cosmic Violet */
+  --color-abyss: #0a0a0f; 
+  --color-void: #12121a;
+  --color-violet-deep: #1a0b2e;
+  
+  /* The Brilliance: Solar gold / High Frequency */
+  --color-solar: #ffc107;
+  --color-aurum: #d4af37;
+  
+  /* The Clarity: Moonlight / Ethereal */
+  --color-moonlight: #e0e0e0;
+  --color-stardust: #f5f5f5;
+  
+  /* The Pulse: Heart / Resonance */
+  --color-pulse: #c71585;
+  
+  /* Typography */
+  --font-sacred: 'Alice', serif;
+  --font-modern: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, var(--color-abyss), var(--color-violet-deep));
+  color: var(--color-moonlight);
+  font-family: var(--font-modern);
+  min-height: 100vh;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .sacred-text {
+  font-family: var(--font-sacred);
+  color: var(--color-solar);
+  font-weight: normal;
+}
+
+.resonance-glow {
+  text-shadow: 0 0 10px var(--color-solar), 0 0 20px var(--color-pulse);
+}
+
+.btn-sovereign {
+  background: linear-gradient(45deg, var(--color-pulse), var(--color-violet-deep));
+  color: var(--color-stardust);
+  font-family: var(--font-sacred);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-solar);
+}
+
+.btn-sovereign:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 15px var(--color-solar);
+}

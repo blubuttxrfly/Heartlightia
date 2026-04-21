@@ -1,0 +1,21 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+import Booking from '../components/Booking.astro';
+---
+<Layout title="Services">
+  <div class="max-w-4xl mx-auto py-12">
+    <h1 class="text-5xl resonance-glow text-center mb-12">Healing & Transformation</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div class="p-8 rounded-2xl border border-solar/30 bg-violet-deep/20 backdrop-blur-sm">
+        <div class="prose prose-invert prose-gold">
+          <!-- Content is handled via the integrated Obsidian text -->
+          <div class="text-lg leading-relaxed">
+            Sovereign Healing Services
+          </div>
+        </div>
+      </div>
+    </div>
+    <Booking />
+  </div>
+</Layout>
