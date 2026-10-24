@@ -107,7 +107,7 @@ export function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            onClick={() => document.getElementById('about-island')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('about-heartlightia')?.scrollIntoView({ behavior: 'smooth' })}
             className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer group z-10"
           >
             <span
@@ -134,7 +134,7 @@ export function Home() {
         </section>
 
         {/* ── ABOUT HEARTLIGHTIA ── */}
-        <section id="about-island" className="relative pt-24 sm:pt-32 pb-20 sm:pb-24 bg-[var(--bg-surface)]/30">
+        <section id="about-heartlightia" className="relative pt-24 sm:pt-32 pb-20 sm:pb-24 bg-[var(--bg-surface)]/30">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="reveal text-center max-w-[720px] mx-auto glass-card p-8 sm:p-12">
               <h2 className="font-display text-[1.8rem] sm:text-[2.2rem] text-[var(--text-glow)] mb-6">
@@ -302,7 +302,7 @@ export function Home() {
           <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="reveal glass-card p-8 sm:p-12">
               <h2 className="font-display text-[1.6rem] sm:text-[2rem] text-[var(--text-glow)] mb-4">
-                The Island is Calling
+                Heartlightia is Calling
               </h2>
               <p className="font-body text-[1rem] text-[var(--text-muted)]/70 mb-6 max-w-[500px] mx-auto">
                 Whether you feel drawn to build, to heal, to teach, to tend, or simply to belong, there is a place for you here.

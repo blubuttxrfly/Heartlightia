@@ -21,7 +21,7 @@ const BROADCAST_CHANNELS = [
     id: 'substack',
     name: 'Substack',
     tagline: 'The Written Garden',
-    description: 'Weekly dispatches from the Island — essays on sacred economics, co-creation, and the 12 Rays of ALL.',
+    description: 'Weekly dispatches from Heartlightia — essays on sacred economics, co-creation, and the 12 Rays of ALL.',
     color: '#FF6719',
     bgColor: '#FF671915',
     borderColor: '#FF671930',
@@ -104,7 +104,7 @@ export function Broadcast() {
               transition={{ duration: 0.8 }}
             >
               <span className="inline-block font-ui text-[0.7rem] uppercase tracking-[0.2em] text-[#c94040] mb-5">
-                Transmissions from the Island
+                Transmissions from Heartlightia
               </span>
               <h1 className="font-display text-[2.5rem] sm:text-[3.5rem] text-[var(--color-solar-gold)] leading-tight mb-6" style={{ textShadow: 'var(--text-shadow-hero)' }}>
                 Broadcast

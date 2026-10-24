@@ -31,7 +31,7 @@ export function Vision() {
                 Heartlightia Vision
               </h1>
               <p className="font-body text-[1.05rem] sm:text-[1.2rem] text-[var(--text-secondary)]/80 italic leading-relaxed max-w-[650px] mx-auto">
-                A peaceful, sovereign, interdependent nation of regenerative eco-islands, co-created with conscious awareness and authentic joy, governed by the <a href="/codes" className="text-[var(--color-solar-gold)] hover:underline">12 Codes of ALL</a>, and open to ALL who feel the call to New Earth.
+                A peaceful, sovereign, interdependent nation of regenerative living sanctuaries, co-created with conscious awareness and authentic joy, governed by the <a href="/codes" className="text-[var(--color-solar-gold)] hover:underline">12 Codes of ALL</a>, and open to ALL who feel the call to New Earth.
               </p>
             </motion.div>
           </div>
@@ -39,19 +39,19 @@ export function Vision() {
 
         <section className="relative py-12 sm:py-16 bg-[var(--bg-page)]">
           <div className="max-w-[800px] mx-auto px-4 sm:px-6 space-y-12">
-            {/* 1. The Eco-Islands Network */}
+            {/* 1. The Living Sanctuaries Network */}
             <div className="reveal" >
               <div className="flex items-center gap-3 mb-5">
                 <Leaf className="w-5 h-5 text-[var(--color-heartlight-green)]" />
                 <h2 className="font-display text-[1.6rem] text-[var(--color-solar-gold)]">
-                  The Eco-Islands Network
+                  The Living Sanctuaries Network
                 </h2>
               </div>
               <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mb-4">
-                Heartlightia is a constellation of regenerative eco-islands, each one a living sanctuary that honors local ecology while weaving into the global web of Heartlight. From coastal shores to mountain valleys, each island holds unique gifts while sharing resources, knowledge, and love across the network.
+                Heartlightia is a constellation of regenerative living sanctuaries, each one honoring local ecology while weaving into the global web of Heartlight. From every direction to mountain valleys, each sanctuary holds unique gifts while sharing resources, knowledge, and love across the network.
               </p>
               <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed">
-                Every island operates on principles of permaculture, mutual aid, and sacred economics. Food forests, renewable energy, water harvesting, and natural building are the baseline of how we choose to dwell upon our Earth.
+                Every sanctuary operates on principles of permaculture, mutual aid, and sacred economics. Food forests, renewable energy, water harvesting, and natural building are the baseline of how we choose to dwell upon our Earth.
               </p>
             </div>
 
@@ -169,7 +169,7 @@ export function Vision() {
               <div className="flex items-center gap-3 mb-6">
                 <Users className="w-5 h-5 text-[#3a9b6f]" />
                 <h2 className="font-display text-[1.6rem] text-[var(--color-solar-gold)]">
-                  Living Roles of the Island
+                  Living Roles of Heartlightia
                 </h2>
               </div>
 
@@ -183,12 +183,12 @@ export function Vision() {
                   { 
                     icon: Users,
                     title: 'Heartlightian Co-Creators', 
-                    desc: 'The heartbeat of Heartlightia. Beings who live, learn, play, and grow within the eco-village, contributing their unique gifts to the collective.' 
+                    desc: 'The heartbeat of Heartlightia. Beings who live, learn, play, and grow within the interconnected community, contributing their unique gifts to the collective.' 
                   },
                   { 
                     icon: Leaf,
                     title: 'Earth Stewards', 
-                    desc: 'Caregivers of land, water, food systems, and living infrastructure. They tend the physical body of the Island with reverence and skill.',
+                    desc: 'Caregivers of land, water, food systems, and living infrastructure. They tend the physical body of Heartlightia with reverence and skill.',
                   },
                   { 
                     icon: Waves,
@@ -216,7 +216,7 @@ export function Vision() {
  >
               <Sparkles className="w-6 h-6 text-[var(--color-magenta-ray)] mx-auto mb-4" />
               <h3 className="font-display text-[1.3rem] text-[var(--color-solar-gold)] mb-4">
-                The Island is Calling
+                Heartlightia is Calling
               </h3>
               <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mb-6 max-w-[600px] mx-auto">
                 Heartlightia exists in the realm of possibility, and possibility

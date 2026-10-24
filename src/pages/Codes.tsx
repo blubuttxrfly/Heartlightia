@@ -164,7 +164,7 @@ export function Codes() {
               <Diamond className="w-6 h-6 text-[var(--color-solar-gold)] mx-auto mb-4" />
               <p className="font-body text-[1rem] text-[var(--color-solar-gold)]/80 italic leading-relaxed mb-6">
                 These Codes are lived values. They shape every wish, every offering, every agreement,
-                and every exchange on Heartlightia. To step onto the Island is to carry them forward.
+                and every exchange on Heartlightia. To step into Heartlightia is to carry them forward.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
@@ -179,7 +179,7 @@ export function Codes() {
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-magenta-ray)]/15 border border-[var(--color-magenta-ray)]/30 text-[var(--color-magenta-ray)] font-ui text-[0.75rem] uppercase tracking-[0.12em] hover:bg-[var(--color-magenta-ray)]/25 transition-all duration-300"
                 >
                   <ArrowRight className="w-4 h-4" />
-                  Step Onto Heartlightia
+                  Step Into Heartlightia
                 </Link>
               </div>
             </motion.div>

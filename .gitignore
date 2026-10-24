@@ -25,3 +25,4 @@ yarn-error.log*
 # Vite cache
 node_modules/.vite/
 node_modules/.tmp/
+.vercel

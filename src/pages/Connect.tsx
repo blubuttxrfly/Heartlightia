@@ -88,7 +88,7 @@ export function Connect() {
                 Connect & Join
               </h1>
               <p className="font-body text-[1.15rem] sm:text-[1.3rem] text-[var(--text-secondary)]/80 italic leading-relaxed max-w-[700px] mx-auto">
-                Step onto Heartlightia. Every being who resonates is welcome.
+                Step into Heartlightia. Every being who resonates is welcome.
                 Choose your path of engagement.
               </p>
             </motion.div>
