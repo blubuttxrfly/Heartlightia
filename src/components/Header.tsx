@@ -49,7 +49,7 @@ export function Header() {
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative w-[42px] h-[42px] flex items-center justify-center">
               <img
-                src="/logo-42.png"
+                src="/heartlightia-symbol-large.png"
                 alt="Heartlightia"
                 className="w-full h-full object-contain"
                 onError={(e) => {

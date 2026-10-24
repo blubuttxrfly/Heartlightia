@@ -83,7 +83,7 @@ export function Home() {
               }}
             />
             <img
-              src="/logo-42.png"
+              src="/heartlightia-symbol-large.png"
               alt="Heartlightia"
               className="relative w-[180px] sm:w-[240px] md:w-[300px] h-auto mx-auto"
               style={{ display: logoError ? 'none' : 'block' }}

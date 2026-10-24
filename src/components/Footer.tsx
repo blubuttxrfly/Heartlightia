@@ -78,7 +78,7 @@ export function Footer() {
               aria-label="Heartlight Time & Tools"
             >
               <img
-                src="/aut-icon.png"
+                src="/heartlightia-app-icon.png"
                 alt="Heartlight Time & Tools"
                 className="w-6 h-6 object-contain rounded"
               />
