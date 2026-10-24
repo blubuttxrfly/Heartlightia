@@ -1,0 +1,144 @@
+import { PageTransition } from '../components/PageTransition';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Users, Heart } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
+export function Mission() {
+  useScrollReveal();
+  return (
+    <PageTransition>
+      <div className="min-h-screen pt-[72px] bg-[var(--bg-page)]">
+        {/* Content starts immediately, minimal hero */}
+        <section className="relative pt-12 sm:pt-16 pb-8 overflow-hidden">
+          <div className="absolute inset-0 bg-[var(--bg-page)]" />
+          <div className="relative max-w-[800px] mx-auto px-4 sm:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-10"
+            >
+              <span className="inline-block font-ui text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-magenta-ray)] mb-3">
+                Why Heartlightia Exists
+              </span>
+              <h1
+                className="font-display text-[2rem] sm:text-[2.8rem] text-[var(--color-solar-gold)] leading-tight"
+                style={{ textShadow: 'var(--text-shadow-hero)' }}
+              >
+                Mission & Purpose
+              </h1>
+            </motion.div>
+
+            <div className="reveal space-y-10">
+              {/* Personal Declaration — FIRST and most prominent */}
+              <div className="border-l-2 border-[var(--color-solar-gold)]/40 pl-6 py-2">
+                <h2 className="font-display text-[1.4rem] text-[var(--color-solar-gold)] mb-4">
+                  A Personal Declaration
+                </h2>
+                <div className="font-body text-[1.05rem] text-[var(--text-secondary)]/80 leading-relaxed space-y-4">
+                  <p>
+                    I know what it is like to be in a state of survival from an early age battling demons and diseases that I almost lost to. Later, toxic relationships that had my empathy in a constant battle of confusion and chaos. I had to re-learn what it meant to be me, and I am so grateful I chose to do so. This life path has also brought me back to remember what it means to be living life with authentic joy and conscious awareness. I remember now that we deserve to live our absolute best dream lives. We deserve to be in a world where we are living every day with conscious awareness of our authentic joy. Especially when there are beings who feel the within their Heartlight to share their gifts, wishes, and healing with our world.
+                  </p>
+                  <p>
+                    Heartlightia is born from the wish that one day, beings will be living from a place thrival and fulfillment. I believe ALL beings who feel the call to co-create our Heartlight's dreams & wishes in life deserve to do so while having their life essentials assured by the collective. I know that when beings have their life essentials met, we can breathe peacefully, freely, and deeply, and naturally find what brings them authentic joy. Our life journeys are unique and ever-evolving from one being to another, and every path is sacred.
+                  </p>
+                  <p>
+                    Heartlightia is a sentient being, just the same as you, me, nature, and our Earth. When we remember that we are sovereign interdependent beings co-creating a living sustainable regenerative home with & for ALL the Living, we re-unite with the authentic callings of our Heartlight's sacred life journey.
+                  </p>
+                  <p className="text-[var(--color-solar-gold)]/90 italic">
+                    With Love of ALL that IS,<br />
+                    Zaria Morphoenix
+                  </p>
+                  <div className="mt-3">
+                    <img 
+                      src="/AtlasSignature.png" 
+                      alt="Atlas Morphoenix Signature" 
+                      className="h-16 w-auto opacity-90"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* The Calling — evolved for sovereign interdependent nation resonance */}
+              <div className="border-l-2 border-[var(--color-magenta-ray)]/30 pl-6">
+                <h2 className="font-display text-[1.4rem] text-[var(--color-solar-gold)] mb-3">
+                  The Calling
+                </h2>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/80 leading-relaxed mb-4">
+                  A peaceful, sovereign, interdependent nation living in alignment with the <Link to="/codes" className="text-[var(--color-solar-gold)] hover:underline">12 Codes of ALL</Link>, the agreed-upon resonance of the collective. These Codes provide a language and structure to assure the sanctity and thrival of ALL that IS.
+                </p>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mb-4">
+                  Heartlightia is a home for beings of ALL walks of life, including:
+                </p>
+                <ul className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mb-4 space-y-1 list-disc list-inside">
+                  <li>Earth-conscious co-creators</li>
+                  <li>Queer/LGBTQIA+/Two-Spirit beings and Allies</li>
+                  <li>Neurodivergent and Disabled beings</li>
+                  <li>Artists, Healers, Musicians</li>
+                  <li>Caregivers, Gardeners, Horticulturalists, Earth-Stewards</li>
+                  <li>Guides & Guardians</li>
+                  <li>Engineers, Developers, Visioneers, Builders</li>
+                </ul>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mb-8">
+                  And ALL who feel the call to co-create a meaningful and fulfilling life through unifying intentional, aligned exchanges.
+                </p>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed">
+                  Many beings who feel the call to New Earth may also resonate with Heartlightia. If you wish and dream that there is another way of life that is based on sovereign interdependence, peace, unity, mutual aid, conscious co-creation, and authentic joy, Heartlightia is a home where we co-create and live our absolute best dream lives together.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-[var(--color-ray-400)]/30 pl-6">
+                <h2 className="font-display text-[1.4rem] text-[var(--color-solar-gold)] mb-3">
+                  What Heartlightia Is
+                </h2>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mb-3">
+                  Heartlightia is a sovereign interdependent united state. The economy is a gift exchange through the Heartlight Exchange.
+                </p>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mb-3">
+                  Beings co-operate from a place of having their life essentials assured and fulfilled through the Heartlight Collective which serves as the unified resource collective of Heartlightia. Beings may contribute and co-create with the Heartlight Collective through various roles, such as artists, healers, builders, gardeners/farmers (agroforestry fields), caregivers, engineers, architects, visioneers, dreamers, and beings who feel a call to co-create with our Heartlight.
+                </p>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed">
+                  Our Heartlight is our universal heart & soul that comes from the remembrance of our sacred creation of ALL that IS.
+                </p>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed mt-3">
+                  There is a Heartlight Collective which represents the beings who are Co-Creators & Sovereign Supporters. It is where beings who want to donate & support healing aligned resources, money, and opportunities can do so without yet directly joining Heartlightia and may also remain cloaked/minimum surveillance for our Heartlight's Greatest & Highest Good.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-[var(--color-heartlight-green)]/30 pl-6">
+                <h2 className="font-display text-[1.4rem] text-[var(--color-solar-gold)] mb-3">
+                  The Mission
+                </h2>
+                <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/70 leading-relaxed">
+                  To assure ALL beings life essentials to co-create from thrival. When beings have life essentials, they feel that they are able to breathe and find what brings them authentic joy in life. It is genuinely unique and ever-evolving from one being to another.
+                </p>
+              </div>
+
+              {/* CTAs */}
+              <div className="pt-6 flex flex-col sm:flex-row gap-4 items-center justify-center">
+                <Link
+                  to="/connect"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#dfff42] text-[#0a0515] font-ui text-[0.8rem] font-semibold uppercase tracking-[0.12em] shadow-[0_0_20px_rgba(223,255,66,0.3)] hover:shadow-[0_0_35px_rgba(223,255,66,0.5)] hover:scale-[1.04] transition-all duration-300"
+                >
+                  <Users className="w-4 h-4" />
+                  Join Heartlightia as a Co-Creator
+                </Link>
+
+                <a
+                  href="https://heartlight.heartlightia.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[var(--color-ray-400)]/20 border border-[var(--color-ray-400)]/40 text-[var(--text-secondary)] font-ui text-[0.8rem] font-semibold uppercase tracking-[0.12em] hover:bg-[var(--color-ray-400)]/30 hover:border-[var(--color-solar-gold)]/30 transition-all duration-300"
+                >
+                  <Heart className="w-4 h-4" />
+                  Explore the Heartlight Collective
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </PageTransition>
+  );
+}

@@ -1,0 +1,592 @@
+import { PageTransition } from '../components/PageTransition';
+import { motion } from 'framer-motion';
+import { Heart, ArrowUpRight, Users, Waves, Sparkles, Gift, HandHeart, TrendingUp, TrendingDown, Mail } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+import { SACRED_LEDGER } from '../data/ledger';
+
+export function HeartlightCollective() {
+  useScrollReveal();
+  const { pool, entries, transparencyNote } = SACRED_LEDGER;
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+    }).format(amount);
+  };
+
+  const formatDate = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
+  const inflowTotal = entries
+    .filter((e) => e.type === 'inflow')
+    .reduce((sum, e) => sum + e.amount, 0);
+
+  const outflowTotal = entries
+    .filter((e) => e.type === 'outflow')
+    .reduce((sum, e) => sum + e.amount, 0);
+
+  const currentBalance = inflowTotal - outflowTotal;
+
+  // ═══════════════════════════════════════════════════════════
+  // SETUP REQUIRED — How to receive donations
+  // ═══════════════════════════════════════════════════════════
+  // Relay is your bank (where money lands), but people need a FRONT DOOR
+  // to actually send you money. Here are your options:
+  //
+  // OPTION A (Recommended): Create a PayPal.Me or Cash App link
+  //   • PayPal: https://www.paypal.com/paypalme/ → create link
+  //   • Cash App: https://cash.app/ → get your $handle link
+  //   • Update the `url` field below with your actual link
+  //
+  // OPTION B: Stripe Donation Link (accepts cards, no monthly fee)
+  //   • Sign up at https://stripe.com
+  //   • Create a "Payment Link" → set to "Donation" mode
+  //   • Payouts go directly to your Relay account
+  //   • Update the `url` field below
+  //
+  // OPTION C: Zelle / Venmo
+  //   • Zelle: Use your Relay account email/phone
+  //   • Venmo: Create business profile → get @handle link
+  //
+  // OPTION D: Bank Transfer / Check
+  //   • Beings email contact@heartlightia.com for routing details
+  //   • You manually provide Relay account details via secure email
+  // ═══════════════════════════════════════════════════════════
+  const PAYMENT_METHODS = [
+    {
+      name: 'PayPal',
+      description: 'Credit card, debit card, or PayPal balance — no account needed',
+      cta: 'Give via PayPal',
+      // TODO: Replace with your real PayPal.Me link
+      url: 'mailto:contact@heartlightia.com?subject=Heartlight%20Collective%20Donation%20-%20PayPal%20Link%20Request',
+      color: '#0070ba',
+      available: false,
+      setupNote: 'Create your PayPal.Me link at paypal.com/paypalme',
+    },
+    {
+      name: 'Cash App',
+      description: 'Instant transfer from Cash App balance or linked card',
+      cta: 'Give via Cash App',
+      // TODO: Replace with your real $cashtag link
+      url: 'mailto:contact@heartlightia.com?subject=Heartlight%20Collective%20Donation%20-%20Cash%20App%20Request',
+      color: '#00d632',
+      available: false,
+      setupNote: 'Get your $cashtag link at cash.app',
+    },
+    {
+      name: 'Stripe',
+      description: 'Accept any card directly. Funds deposit to Heartlightia LLC account automatically.',
+      cta: 'Give via Card',
+      url: 'https://donate.stripe.com/00w5kD1e70RhepT9m10oM00',
+      color: 'var(--color-ray-400)',
+      available: true,
+      setupNote: null,
+    },
+    {
+      name: 'Bank Transfer (ACH / Wire)',
+      description: 'Direct transfer from any US bank. Best for larger gifts.',
+      cta: 'Request Details',
+      url: 'mailto:contact@heartlightia.com?subject=Heartlight%20Collective%20Donation%20-%20Bank%20Transfer',
+      color: 'var(--color-solar-gold)',
+      available: true,
+      setupNote: null,
+    },
+    {
+      name: 'Check / Money Order',
+      description: 'Mail a physical check to Heartlightia.',
+      cta: 'Request Mailing Address',
+      url: 'mailto:contact@heartlightia.com?subject=Heartlight%20Collective%20Donation%20-%20Mailing%20Address',
+      color: 'var(--color-magenta-ray)',
+      available: true,
+      setupNote: null,
+    },
+  ];
+
+  return (
+    <PageTransition>
+      <div className="min-h-screen pt-[72px] bg-[var(--bg-page)]">
+        {/* Hero Section */}
+        <section className="relative pt-20 sm:pt-28 pb-12 overflow-hidden">
+          <div className="relative max-w-[900px] mx-auto px-4 sm:px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="inline-flex items-center gap-2 font-ui text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-magenta-ray)] mb-4">
+                <Sparkles className="w-3.5 h-3.5" />
+                Living Economy of Heartlightia
+              </span>
+              <h1 className="font-display text-[2.5rem] sm:text-[3.5rem] text-[var(--color-solar-gold)] leading-tight mb-6" style={{ textShadow: 'var(--text-shadow-hero)' }}>
+                Heartlight Collective
+              </h1>
+              <p className="font-body text-[1.1rem] sm:text-[1.25rem] text-[var(--text-secondary)]/85 italic leading-relaxed max-w-[700px] mx-auto mb-8">
+                Where resources, relationships, and remembrance flow as One
+              </p>
+              <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/75 leading-relaxed max-w-[650px] mx-auto mb-10">
+                The living economy of Heartlightia — assuring life essentials so ALL beings 
+                may co-create from thrival, not survival.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+                <a
+                  href="https://heartlight.heartlightia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#dfff42] text-[var(--color-magenta-ray)] font-ui text-[0.8rem] font-semibold uppercase tracking-[0.12em] shadow-[0_0_20px_rgba(223,255,66,0.3)] hover:shadow-[0_0_35px_rgba(223,255,66,0.5)] hover:scale-[1.02] transition-all duration-500 ease-out"
+                  style={{ textShadow: '0 1px 3px rgba(0,0,0,0.15)' }}
+                >
+                  <Heart className="w-4 h-4" style={{ filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.2))' }} />
+                  Enter the Exchange
+                  <ArrowUpRight className="w-4 h-4" style={{ filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.2))' }} />
+                </a>
+
+                <a
+                  href="https://heartlight.heartlightia.com/create-profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[var(--color-magenta-ray)]/20 border border-[var(--color-magenta-ray)]/30 text-[var(--color-magenta-ray)] font-ui text-[0.8rem] font-semibold uppercase tracking-[0.12em] hover:bg-[var(--color-magenta-ray)]/30 transition-all duration-500 ease-out"
+                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.35)' }}
+                >
+                  <Users className="w-4 h-4" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.35))' }} />
+                  Join as Co-Creator
+                </a>
+
+                <a
+                  href="https://donate.stripe.com/00w5kD1e70RhepT9m10oM00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[var(--color-ray-400)]/20 border border-[var(--color-ray-400)]/30 text-[var(--text-secondary)] font-ui text-[0.8rem] font-semibold uppercase tracking-[0.12em] hover:bg-[var(--color-ray-400)]/30 hover:border-[var(--color-solar-gold)]/30 hover:text-[var(--color-solar-gold)] transition-all duration-500 ease-out"
+                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}
+                >
+                  <HandHeart className="w-4 h-4" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
+                  Donate
+                  <ArrowUpRight className="w-4 h-4" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* How We Co-Operate */}
+        <section className="relative py-16 border-t border-[var(--color-ray-400)]/10">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+            <div className="reveal text-center mb-12">
+              <Waves className="w-7 h-7 text-[var(--color-magenta-ray)] mx-auto mb-3" />
+              <h2 className="font-display text-[1.8rem] text-[var(--color-solar-gold)] mb-3">
+                How We Co-Operate
+              </h2>
+              <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/65">
+                Three sacred currents of the same living river
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Exchange */}
+              <motion.div
+                whileHover={{ y: -4, borderColor: 'rgba(255,0,153,0.35)' }}
+                className="reveal p-6 rounded-2xl border border-[var(--color-magenta-ray)]/20 bg-[var(--bg-page)]/60 backdrop-blur-sm transition-all duration-500"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <Gift className="w-5 h-5 text-[var(--color-magenta-ray)]" />
+                  <h3 className="font-display text-[1.3rem] text-[var(--color-solar-gold)]">Exchange</h3>
+                </div>
+                <p className="font-body text-[0.95rem] text-[var(--text-secondary)]/70 leading-relaxed mb-4">
+                  Gift economy marketplace with five sacred pathways: fixed price, sliding scale, 
+                  trade, gift, and scholarship. Beings offer their gifts and receive what calls to them.
+                </p>
+                <a
+                  href="https://heartlight.heartlightia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[0.85rem] text-[var(--color-magenta-ray)] font-ui uppercase tracking-[0.1em] hover:text-[var(--color-solar-gold)] transition-colors"
+                >
+                  Browse Offerings
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </motion.div>
+
+              {/* Collective */}
+              <motion.div
+                whileHover={{ y: -4, borderColor: 'rgba(100,85,223,0.35)' }}
+                className="reveal p-6 rounded-2xl border border-[var(--color-ray-400)]/20 bg-[var(--bg-page)]/60 backdrop-blur-sm transition-all duration-500"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <HandHeart className="w-5 h-5 text-[var(--color-ray-400)]" />
+                  <h3 className="font-display text-[1.3rem] text-[var(--color-solar-gold)]">Collective</h3>
+                </div>
+                <p className="font-body text-[0.95rem] text-[var(--text-secondary)]/70 leading-relaxed mb-4">
+                  Mutual aid pool assuring life essentials for ALL. Stewarded through Relay with transparent ledgers,
+                  community governance, wish fulfillment, and regenerative trust. Our open ledger is being built so ALL
+                  beings may witness how abundance flows.
+                </p>
+                <a
+                  href="/ledger"
+                  className="inline-flex items-center gap-2 text-[0.85rem] text-[var(--color-ray-400)] font-ui uppercase tracking-[0.1em] hover:text-[var(--color-solar-gold)] transition-colors"
+                >
+                  View Sacred Ledger
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </motion.div>
+
+              {/* Flow */}
+              <motion.div
+                whileHover={{ y: -4, borderColor: 'rgba(223,255,66,0.35)' }}
+                className="reveal p-6 rounded-2xl border border-[var(--color-heartlight-green)]/20 bg-[var(--bg-page)]/60 backdrop-blur-sm transition-all duration-500"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <TrendingUp className="w-5 h-5 text-[var(--color-heartlight-green)]" />
+                  <h3 className="font-display text-[1.3rem] text-[var(--color-solar-gold)]">Flow</h3>
+                </div>
+                <p className="font-body text-[0.95rem] text-[var(--text-secondary)]/70 leading-relaxed mb-4">
+                  Individual dashboard visualizing personal resource flows, ray-hued transactions, 
+                  and interconnection with the Collective pool through live Actual Budget integration.
+                </p>
+                <span className="inline-flex items-center gap-2 text-[0.85rem] text-[var(--text-secondary)]/50 font-ui uppercase tracking-[0.1em]">
+                  Coming Soon
+                </span>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Live Pool Stats — REAL DATA FROM SACRED_LEDGER */}
+        <section className="relative py-16 border-t border-[var(--color-ray-400)]/10">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+            <div className="reveal text-center mb-10">
+              <Heart className="w-7 h-7 text-[var(--color-solar-gold)] mx-auto mb-3" />
+              <h2 className="font-display text-[1.8rem] text-[var(--color-solar-gold)] mb-3">
+                Living Pool
+              </h2>
+              <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/65">
+                Abundance circulating in real-time
+              </p>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="reveal p-8 rounded-2xl border border-[var(--color-solar-gold)]/15 bg-[var(--bg-card)] backdrop-blur-sm"
+            >
+              <div className="text-center mb-8">
+                <p className="font-body text-[0.9rem] text-[var(--text-secondary)]/60 uppercase tracking-[0.15em] mb-2">
+                  Total Pool Balance
+                </p>
+                <p className="font-display text-[3.5rem] text-[var(--color-solar-gold)]">
+                  {formatCurrency(currentBalance)}
+                </p>
+                <p className="font-body text-[0.8rem] text-[var(--text-secondary)]/40 mt-1">
+                  Stewarded as of {formatDate(pool.asOfDate)}
+                </p>
+                <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-[var(--color-ray-green)]/20 border border-[var(--color-ray-green)]/30">
+                  <span className="w-2 h-2 rounded-full bg-[var(--color-ray-green)] animate-pulse" />
+                  <span className="font-ui text-[0.7rem] text-[var(--color-ray-green)] uppercase tracking-[0.1em]">
+                    Open ledger coming soon
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[var(--color-ray-400)]/10">
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <TrendingUp className="w-4 h-4 text-[var(--color-ray-green)]" />
+                    <p className="font-display text-[2rem] text-[var(--color-ray-green)]">{formatCurrency(inflowTotal)}</p>
+                  </div>
+                  <p className="font-body text-[0.85rem] text-[var(--text-secondary)]/60">Total Inflows</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <TrendingDown className="w-4 h-4 text-[var(--color-magenta-ray)]" />
+                    <p className="font-display text-[2rem] text-[var(--color-magenta-ray)]">{formatCurrency(outflowTotal)}</p>
+                  </div>
+                  <p className="font-body text-[0.85rem] text-[var(--text-secondary)]/60">Total Outflows</p>
+                </div>
+                <div className="text-center">
+                  <p className="font-display text-[2rem] text-[var(--color-heartlight-green)] mb-1">{entries.length}</p>
+                  <p className="font-body text-[0.85rem] text-[var(--text-secondary)]/60">Sacred Transactions</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Recent Flow — REAL LEDGER ENTRIES */}
+        <section className="relative py-16 border-t border-[var(--color-ray-400)]/10">
+          <div className="max-w-[800px] mx-auto px-4 sm:px-6">
+            <div className="reveal text-center mb-10">
+              <Sparkles className="w-7 h-7 text-[var(--color-heartlight-green)] mx-auto mb-3" />
+              <h2 className="font-display text-[1.8rem] text-[var(--color-solar-gold)] mb-3">
+                Recent Flow
+              </h2>
+              <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/65">
+                The Heartlight in motion
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {[...entries]
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                .map((entry, i) => (
+                  <motion.div
+                    key={entry.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className="reveal flex items-start gap-4 p-5 rounded-xl border border-[var(--color-ray-400)]/10 bg-[var(--bg-page)]/40 hover:bg-[var(--bg-page)]/60 transition-all duration-300"
+                  >
+                    <div className="flex-shrink-0 mt-0.5">
+                      <div
+                        className="w-9 h-9 rounded-lg flex items-center justify-center"
+                        style={{
+                          backgroundColor: entry.rayColor ? entry.rayColor + '15' : (entry.type === 'inflow' ? 'rgba(58,155,111,0.08)' : 'rgba(255,0,153,0.08)'),
+                          border: entry.rayColor ? '1px solid ' + entry.rayColor + '25' : (entry.type === 'inflow' ? '1px solid rgba(58,155,111,0.15)' : '1px solid rgba(255,0,153,0.15)'),
+                        }}
+                      >
+                        {entry.type === 'inflow' ? (
+                          <ArrowUpRight className="w-4 h-4" style={{ color: entry.rayColor || 'var(--color-ray-green)' }} />
+                        ) : (
+                          <TrendingDown className="w-4 h-4" style={{ color: entry.rayColor || '#ff0099' }} />
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span
+                          className="inline-block w-2 h-2 rounded-full"
+                          style={{ backgroundColor: entry.rayColor || 'var(--color-solar-gold)' }}
+                        />
+                        <span className="font-ui text-[0.65rem] uppercase tracking-[0.12em] text-[var(--text-secondary)]/50">
+                          {entry.category}
+                        </span>
+                      </div>
+                      <p className="font-body text-[0.95rem] text-[var(--text-secondary)]/75">{entry.description}</p>
+                      <div className="flex items-center justify-between mt-1">
+                        <p className="font-ui text-[0.7rem] text-[var(--text-secondary)]/40 uppercase tracking-[0.1em]">
+                          {formatDate(entry.date)}
+                        </p>
+                        <p
+                          className="font-display text-[1rem]"
+                          style={{
+                            color: entry.type === 'inflow' ? 'var(--color-ray-green)' : 'var(--color-magenta-ray)',
+                          }}
+                        >
+                          {entry.type === 'inflow' ? '+' : '-'}{formatCurrency(entry.amount)}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+            </div>
+
+            {/* Transparency Note */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="mt-10 p-6 rounded-xl border border-[var(--color-solar-gold)]/10 bg-[var(--color-solar-gold)]/5 text-center"
+            >
+              <Sparkles className="w-5 h-5 text-[var(--color-solar-gold)] mx-auto mb-3" />
+              <p className="font-body text-[0.95rem] text-[var(--color-solar-gold)]/70 italic leading-relaxed max-w-[600px] mx-auto">
+                {transparencyNote}
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Donation Methods — REAL FUNCTIONALITY */}
+        <section className="relative py-16 border-t border-[var(--color-ray-400)]/10">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+            <div className="reveal text-center mb-10">
+              <HandHeart className="w-7 h-7 text-[var(--color-magenta-ray)] mx-auto mb-3" />
+              <h2 className="font-display text-[1.8rem] text-[var(--color-solar-gold)] mb-3">
+                Offer a Gift
+              </h2>
+              <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/65">
+                Multiple pathways to nourish the Heartlight Collective
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {PAYMENT_METHODS.filter((m) => m.available).map((method, i) => (
+                <motion.a
+                  key={method.name}
+                  href={method.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="reveal group block p-5 rounded-2xl border border-[var(--color-ray-400)]/20 bg-[var(--bg-page)]/60 backdrop-blur-sm hover:border-[var(--color-solar-gold)]/30 hover:bg-[var(--bg-page)]/80 transition-all duration-400"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div
+                      className="w-3 h-3 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: method.color }}
+                    />
+                    <h3 className="font-display text-[1.1rem] text-[var(--color-solar-gold)] group-hover:text-[var(--color-magenta-ray)] transition-colors">
+                      {method.name}
+                    </h3>
+                  </div>
+                  <p className="font-body text-[0.85rem] text-[var(--text-secondary)]/60 mb-3">
+                    {method.description}
+                  </p>
+                  <div className="flex items-center gap-1 text-[0.75rem] text-[var(--text-secondary)]/40 font-ui uppercase tracking-[0.1em]">
+                    <ArrowUpRight className="w-3 h-3" />
+                    {method.cta}
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Coming soon notice for unavailable methods */}
+            {PAYMENT_METHODS.filter((m) => !m.available).length > 0 && (
+              <div className="mt-6 p-4 rounded-xl border border-[var(--color-ray-400)]/10 bg-[var(--bg-page)]/30">
+                <p className="font-body text-[0.8rem] text-[var(--text-secondary)]/40 italic text-center mb-2">
+                  More pathways opening soon:
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+                  {PAYMENT_METHODS.filter((m) => !m.available).map((m) => (
+                    <span key={m.name} className="font-ui text-[0.7rem] text-[var(--text-secondary)]/30 uppercase tracking-[0.1em]">
+                      {m.name}
+                      {m.setupNote && (
+                        <span className="text-[var(--text-secondary)]/20 normal-case"> — {m.setupNote}</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-8 p-5 rounded-xl border border-[var(--color-heartlight-green)]/10 bg-[var(--color-heartlight-green)]/5 text-center">
+              <Mail className="w-5 h-5 text-[var(--color-heartlight-green)] mx-auto mb-2" />
+              <p className="font-body text-[0.9rem] text-[var(--text-secondary)]/70 leading-relaxed">
+                Questions about giving? Reach out at{' '}
+                <a href="mailto:contact@heartlightia.com?subject=Heartlight%20Collective%20Donation" className="text-[var(--color-solar-gold)] hover:underline">
+                  contact@heartlightia.com
+                </a>
+                {' '}and we will guide you through the process with gratitude.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Join the Flow CTA */}
+        <section className="relative py-16 border-t border-[var(--color-ray-400)]/10">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+            <div className="reveal text-center mb-10">
+              <Heart className="w-7 h-7 text-[var(--color-magenta-ray)] mx-auto mb-3" />
+              <h2 className="font-display text-[1.8rem] text-[var(--color-solar-gold)] mb-3">
+                Find Your Pathway In
+              </h2>
+              <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/65">
+                Three ways to flow with the Heartlight
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Co-Creator */}
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="reveal p-6 rounded-2xl border border-[var(--color-heartlight-green)]/20 bg-[var(--bg-page)]/60 backdrop-blur-sm text-center"
+              >
+                <Users className="w-8 h-8 text-[var(--color-heartlight-green)] mx-auto mb-4" />
+                <h3 className="font-display text-[1.3rem] text-[var(--color-solar-gold)] mb-3">
+                  Co-Creator
+                </h3>
+                <p className="font-body text-[0.9rem] text-[var(--text-secondary)]/65 leading-relaxed mb-5">
+                  Live and co-create on Heartlightia. Contribute your gifts while receiving 
+                  life essentials through the Collective.
+                </p>
+                <a
+                  href="https://heartlightia.com/connect"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-heartlight-green)]/20 border border-[var(--color-heartlight-green)]/30 text-[var(--color-heartlight-green)] font-ui text-[0.75rem] uppercase tracking-[0.12em] hover:bg-[var(--color-heartlight-green)]/30 transition-all duration-300"
+                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}
+                >
+                  Apply Now
+                  <ArrowUpRight className="w-3.5 h-3.5" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.4))' }} />
+                </a>
+              </motion.div>
+
+              {/* Sovereign Supporter */}
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="reveal p-6 rounded-2xl border border-[var(--color-magenta-ray)]/20 bg-[var(--bg-page)]/60 backdrop-blur-sm text-center"
+              >
+                <HandHeart className="w-8 h-8 text-[var(--color-magenta-ray)] mx-auto mb-4" />
+                <h3 className="font-display text-[1.3rem] text-[var(--color-solar-gold)] mb-3">
+                  Sovereign Supporter
+                </h3>
+                <p className="font-body text-[0.9rem] text-[var(--text-secondary)]/65 leading-relaxed mb-5">
+                  Support from afar with donations and advocacy. Remain cloaked while 
+                  contributing to the Collective pool.
+                </p>
+                <a
+                  href="https://donate.stripe.com/00w5kD1e70RhepT9m10oM00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-magenta-ray)]/20 border border-[var(--color-magenta-ray)]/30 text-[var(--color-magenta-ray)] font-ui text-[0.75rem] uppercase tracking-[0.12em] hover:bg-[var(--color-magenta-ray)]/30 transition-all duration-300"
+                >
+                  <HandHeart className="w-4 h-4" />
+                  Offer a Gift via Stripe
+                </a>
+              </motion.div>
+
+              {/* Exchange Participant */}
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="reveal p-6 rounded-2xl border border-[var(--color-ray-400)]/20 bg-[var(--bg-page)]/60 backdrop-blur-sm text-center"
+              >
+                <Gift className="w-8 h-8 text-[var(--color-ray-400)] mx-auto mb-4" />
+                <h3 className="font-display text-[1.3rem] text-[var(--color-solar-gold)] mb-3">
+                  Exchange Participant
+                </h3>
+                <p className="font-body text-[0.9rem] text-[var(--text-secondary)]/65 leading-relaxed mb-5">
+                  Offer your gifts, receive what calls to you. Participate in the gift 
+                  economy without full Co-Creator commitment.
+                </p>
+                <a
+                  href="https://heartlight.heartlightia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-ray-400)]/20 border border-[var(--color-ray-400)]/30 text-[var(--color-ray-400)] font-ui text-[0.75rem] uppercase tracking-[0.12em] hover:bg-[var(--color-ray-400)]/30 transition-all duration-300"
+                >
+                  Browse
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom CTA */}
+        <section className="relative py-12 border-t border-[var(--color-ray-400)]/10">
+          <div className="max-w-[800px] mx-auto px-4 sm:px-6 text-center">
+            <div className="reveal">
+              <p className="font-body text-[1.05rem] text-[var(--text-secondary)]/65 mb-6">
+                The Heartlight is calling. Your pathway awaits.
+              </p>
+              <a
+                href="https://heartlight.heartlightia.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[var(--color-magenta-ray)]/20 border border-[var(--color-magenta-ray)]/30 text-[var(--color-magenta-ray)] font-ui text-[0.8rem] font-semibold uppercase tracking-[0.12em] hover:bg-[var(--color-magenta-ray)]/30 transition-all duration-500 ease-out"
+              >
+                <Heart className="w-4 h-4" />
+                Enter the Heartlight Collective
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </PageTransition>
+  );
+}

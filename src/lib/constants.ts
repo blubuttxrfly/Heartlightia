@@ -1,0 +1,112 @@
+import { type NavItem } from '../types';
+
+export const NAV_ITEMS: NavItem[] = [
+  { path: '/', label: 'Home', description: 'The gateway to Heartlightia' },
+  { path: '/mission', label: 'Mission & Purpose', description: 'Why Heartlightia exists' },
+  { path: '/atlas-of-all', label: 'Atlas of ALL', description: 'The Living Codex' },
+  { path: '/heartlight', label: 'Heartlight Collective', description: 'Living economy of Heartlightia' },
+  { path: '/vision', label: 'Vision', description: 'The future of Heartlightia' },
+  { path: '/broadcast', label: 'Broadcast', description: 'Videos & transmissions' },
+  { path: '/connect', label: 'Connect & Join', description: 'Step into Heartlightia' },
+];
+
+export const QUICK_LINKS = [
+  {
+    id: 'youtube',
+    title: 'YouTube',
+    description: 'The 12 Rays of ALL & transmissions',
+    url: 'https://www.youtube.com/@AtlasIslandCo',
+    icon: 'Youtube',
+    iconImage: '/youtube-icon.webp',
+    rayColor: '#c94040',
+    external: true,
+  },
+  {
+    id: 'discord',
+    title: 'Discord',
+    description: 'Join the Heartlightia circle',
+    url: 'https://discord.gg/SVNFrqk8Mv',
+    icon: 'Users',
+    iconImage: '/discord-icon.webp',
+    rayColor: '#5865F2',
+    external: true,
+  },
+  {
+    id: 'exchange',
+    title: 'Heartlight Exchange',
+    description: 'Gift economy & co-creation',
+    url: 'https://heartlight.heartlightia.com/exchange',
+    icon: 'Heart',
+    iconImage: '',
+    rayColor: '#3a9b6f',
+    external: false,
+  },
+  {
+    id: 'aut',
+    title: 'Heartlight Time & Tools',
+    description: 'Heartlightian Universal Time',
+    url: 'https://hut.heartlightia.com/',
+    icon: 'Clock',
+    iconImage: '',
+    rayColor: '#2ab3c4',
+    external: true,
+  },
+  {
+    id: 'book',
+    title: 'Atlas of ALL',
+    description: 'The Living Codex',
+    url: '/atlas-of-all',
+    icon: 'BookOpen',
+    iconImage: '',
+    rayColor: '#8b4fb5',
+    external: false,
+  },
+  {
+    id: 'flow',
+    title: 'Heartlight Flow',
+    description: 'Resource tracking dashboard',
+    url: 'https://heartlight.heartlightia.com/flow',
+    icon: 'TrendingUp',
+    iconImage: '',
+    rayColor: '#d4b830',
+    external: true,
+  },
+];
+
+export const SOCIAL_LINKS = [
+  {
+    id: 'youtube',
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@AtlasIslandCo',
+    iconImage: '/youtube-icon.webp',
+    alt: 'YouTube channel',
+  },
+  {
+    id: 'substack',
+    name: 'Substack',
+    url: 'https://heartlightia.substack.com/',
+    iconImage: '/substack-icon.svg',
+    alt: 'Substack newsletter',
+  },
+  {
+    id: 'instagram',
+    name: 'Instagram',
+    url: 'https://www.instagram.com/heartlightia',
+    iconImage: '/instagram-icon.webp',
+    alt: 'Instagram profile',
+  },
+  {
+    id: 'threads',
+    name: 'Threads',
+    url: 'https://www.threads.com/@heartlightia',
+    iconImage: '/threads-icon.webp',
+    alt: 'Threads profile',
+  },
+  {
+    id: 'discord',
+    name: 'Discord',
+    url: 'https://discord.gg/SVNFrqk8Mv',
+    iconImage: '/discord-icon.webp',
+    alt: 'Discord server',
+  },
+];
