@@ -60,7 +60,7 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span
-                className="font-display text-[1.2rem] sm:text-[1.35rem] text-[var(--color-magenta-ray)] leading-tight tracking-wide"
+                className="font-display text-[1.2rem] sm:text-[1.35rem] text-[var(--text-glow)] leading-tight tracking-wide"
               >
                 Heartlightia
               </span>
@@ -131,7 +131,7 @@ export function Header() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#7B52DA] dark:bg-[rgba(123,82,218,0.2)] border border-[var(--border-default)] text-[var(--color-magenta-ray)] font-ui text-[0.75rem] uppercase tracking-[0.1em]"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#7B52DA] dark:bg-[rgba(123,82,218,0.2)] border border-[var(--border-default)] text-[var(--text-glow)] font-ui text-[0.75rem] uppercase tracking-[0.1em]"
               >
                 <span>{currentItem.label}</span>
                 <ChevronDown

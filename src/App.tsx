@@ -24,7 +24,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/mission" element={<Mission />} />
-        <Route path="/atlas-of-all" element={<AtlasOfAll />} />
+        <Route path="/12-rays-guide-and-journal" element={<AtlasOfAll />} />
         <Route path="/vision" element={<Vision />} />
         <Route path="/broadcast" element={<Broadcast />} />
         <Route path="/heartlight" element={<HeartlightCollective />} />

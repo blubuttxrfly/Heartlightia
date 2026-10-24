@@ -3,7 +3,7 @@ import { type NavItem } from '../types';
 export const NAV_ITEMS: NavItem[] = [
   { path: '/', label: 'Home', description: 'The gateway to Heartlightia' },
   { path: '/mission', label: 'Mission & Purpose', description: 'Why Heartlightia exists' },
-  { path: '/atlas-of-all', label: '12 Rays Guide & Journal', description: 'The Living Guide' },
+  { path: '/12-rays-guide-and-journal', label: '12 Rays Guide & Journal', description: 'The Living Guide' },
   { path: '/heartlight', label: 'Heartlight Collective', description: 'Living economy of Heartlightia' },
   { path: '/vision', label: 'Vision', description: 'The future of Heartlightia' },
   { path: '/broadcast', label: 'Broadcast', description: 'Videos & transmissions' },
@@ -55,7 +55,7 @@ export const QUICK_LINKS = [
     id: 'book',
     title: '12 Rays Guide & Journal',
     description: 'The Living Guide',
-    url: '/atlas-of-all',
+    url: '/12-rays-guide-and-journal',
     icon: 'BookOpen',
     iconImage: '',
     rayColor: '#8b4fb5',

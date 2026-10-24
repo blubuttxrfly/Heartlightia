@@ -1,7 +1,7 @@
 export type PageRoute =
   | '/'
   | '/mission'
-  | '/atlas-of-all'
+  | '/12-rays-guide-and-journal'
   | '/vision'
   | '/broadcast'
   | '/heartlight'
