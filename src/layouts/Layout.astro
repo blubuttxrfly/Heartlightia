@@ -8,7 +8,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="theme-color" content="#090415" />
+    <meta name="theme-color" content="#0A1F12" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Heartlightia</title>
 
@@ -20,7 +20,7 @@ const { title } = Astro.props;
         const theme = stored === 'light' ? 'light' : (stored === 'dark' ? 'dark' : (prefersDark ? 'dark' : 'light'));
         document.documentElement.setAttribute('data-theme', theme);
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = theme === 'dark' ? '#090415' : '#EFEAFB';
+        if (meta) meta.content = theme === 'dark' ? '#0A1F12' : '#F0FDF4';
       })();
     </script>
   </head>
@@ -72,7 +72,7 @@ const { title } = Astro.props;
           document.documentElement.setAttribute('data-theme', theme);
           localStorage.setItem(STORAGE_KEY, theme);
           const meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.content = theme === 'dark' ? '#090415' : '#EFEAFB';
+          if (meta) meta.content = theme === 'dark' ? '#0A1F12' : '#F0FDF4';
           updateIcons(theme);
         }
 
