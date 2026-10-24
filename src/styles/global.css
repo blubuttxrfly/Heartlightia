@@ -1,57 +1,364 @@
-
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Alice&family=Inter:wght@300;400;600&display=swap');
 
-:root {
-  /* The Foundation: Sacred Obsidian / Cosmic Violet */
-  --color-abyss: #0a0a0f; 
-  --color-void: #12121a;
-  --color-violet-deep: #1a0b2e;
-  
-  /* The Brilliance: Solar gold / High Frequency */
-  --color-solar: #ffc107;
-  --color-aurum: #d4af37;
-  
-  /* The Clarity: Moonlight / Ethereal */
-  --color-moonlight: #e0e0e0;
-  --color-stardust: #f5f5f5;
-  
-  /* The Pulse: Heart / Resonance */
-  --color-pulse: #c71585;
-  
+/* ═══════════════════════════════════════════════════════════════
+   HEARTLIGHTIA — Venusian Ray Palette
+   Main hues: Violet #4D25AD, Green #22C55E, Gold #D4AF37, Rose Gold #E8B4B8, Magenta #D946EF
+   ═══════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* Deep Violet Ray Scale */
+  --color-ray-50:  #EFEAFB;
+  --color-ray-100: #D2C4F3;
+  --color-ray-200: #B59EEA;
+  --color-ray-300: #9878E2;
+  --color-ray-400: #7B52DA;
+  --color-ray-500: #5E2DD2;
+  --color-ray-600: #4D25AD;
+  --color-ray-700: #3C1D87;
+  --color-ray-800: #2E1666;
+  --color-ray-900: #1A0C3B;
+  --color-ray-950: #090415;
+
+  /* Solar / Lunar accents */
+  --color-solar:     #fad144;
+  --color-solar-soft:#ffe9a8;
+  --color-lunar:     #e0e0e0;
+  --color-lunar-soft:#f5f5f5;
+
+  /* Pulse / Heart resonance */
+  --color-pulse:     #c71585;
+  --color-pulse-soft:#e84a9c;
+
   /* Typography */
-  --font-sacred: 'Alice', serif;
-  --font-modern: 'Inter', sans-serif;
+  --font-sacred: 'Alice', 'Georgia', 'Times New Roman', serif;
+  --font-modern: 'Inter', system-ui, sans-serif;
+
+  /* Animations */
+  --animate-pulse-slow: pulse 4s ease-in-out infinite;
+  --animate-shimmer:    shimmer 8s linear infinite;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   DARK THEME (default — Moon Mode)
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-theme="dark"],
+html:not([data-theme]) {
+  --bg-primary:   var(--color-ray-950);
+  --bg-secondary: var(--color-ray-900);
+  --bg-card:      rgba(26, 12, 59, 0.7);
+  --bg-input:     rgba(41, 22, 102, 0.4);
+  --text-primary: var(--color-lunar);
+  --text-secondary: var(--color-ray-100);
+  --text-muted:   var(--color-ray-200);
+  --text-glow:    var(--color-solar);
+  --border-default: rgba(123, 82, 218, 0.2);
+  --border-hover:   rgba(123, 82, 218, 0.45);
+  --shadow-glow:    rgba(123, 82, 218, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT THEME (Sun Mode)
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-theme="light"] {
+  --bg-primary:   var(--color-ray-50);
+  --bg-secondary: var(--color-ray-100);
+  --bg-card:      rgba(255, 255, 255, 0.85);
+  --bg-input:     rgba(239, 234, 251, 0.7);
+  --text-primary: var(--color-ray-900);
+  --text-secondary: var(--color-ray-800);
+  --text-muted:   var(--color-ray-700);
+  --text-glow:    var(--color-ray-600);
+  --border-default: rgba(77, 37, 173, 0.15);
+  --border-hover:   rgba(77, 37, 173, 0.35);
+  --shadow-glow:    rgba(77, 37, 173, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
 body {
-  background: linear-gradient(135deg, var(--color-abyss), var(--color-violet-deep));
-  color: var(--color-moonlight);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-modern);
   min-height: 100vh;
   margin: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1, h2, h3, .sacred-text {
   font-family: var(--font-sacred);
-  color: var(--color-solar);
+  color: var(--text-glow);
   font-weight: normal;
 }
 
+/* Sacred glow effect — adapts to theme */
 .resonance-glow {
-  text-shadow: 0 0 10px var(--color-solar), 0 0 20px var(--color-pulse);
+  text-shadow:
+    0 0 10px var(--shadow-glow),
+    0 0 30px var(--shadow-glow),
+    0 0 60px rgba(123, 82, 218, 0.1);
 }
 
+html[data-theme="light"] .resonance-glow {
+  text-shadow:
+    0 0 8px rgba(77, 37, 173, 0.15),
+    0 0 20px rgba(77, 37, 173, 0.08);
+}
+
+/* Sovereign button */
 .btn-sovereign {
-  background: linear-gradient(45deg, var(--color-pulse), var(--color-violet-deep));
-  color: var(--color-stardust);
+  background: linear-gradient(45deg, var(--color-ray-700), var(--color-ray-600));
+  color: var(--color-lunar-soft);
   font-family: var(--font-sacred);
   transition: all 0.3s ease;
-  border: 1px solid var(--color-solar);
+  border: 1px solid var(--color-ray-400);
+}
+
+html[data-theme="light"] .btn-sovereign {
+  background: linear-gradient(45deg, var(--color-ray-600), var(--color-ray-500));
+  color: #ffffff;
+  border-color: var(--color-ray-400);
 }
 
 .btn-sovereign:hover {
-  filter: brightness(1.2);
-  box-shadow: 0 0 15px var(--color-solar);
+  filter: brightness(1.15);
+  box-shadow: 0 0 20px var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   STARFIELD BACKGROUND
+   ═══════════════════════════════════════════════════════════════ */
+
+.bg-starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-starfield::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(2px 2px at 160px 90px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 230px 50px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2px 2px at 300px 120px, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 370px 80px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(2px 2px at 450px 150px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 520px 60px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2px 2px at 600px 180px, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 100px 200px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(2px 2px at 250px 250px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 400px 300px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2px 2px at 550px 280px, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 700px 350px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(2px 2px at 150px 400px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 350px 450px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2px 2px at 500px 500px, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 650px 420px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(2px 2px at 800px 380px, rgba(255, 255, 255, 0.55), transparent);
+  background-size: 900px 600px;
+  opacity: 0.5;
+}
+
+html[data-theme="light"] .bg-starfield::before {
+  opacity: 0.2;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(77, 37, 173, 0.45), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(77, 37, 173, 0.35), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(77, 37, 173, 0.4), transparent),
+    radial-gradient(2px 2px at 160px 90px, rgba(77, 37, 173, 0.3), transparent),
+    radial-gradient(1px 1px at 230px 50px, rgba(77, 37, 173, 0.45), transparent),
+    radial-gradient(2px 2px at 300px 120px, rgba(77, 37, 173, 0.35), transparent),
+    radial-gradient(1px 1px at 370px 80px, rgba(77, 37, 173, 0.4), transparent),
+    radial-gradient(2px 2px at 450px 150px, rgba(77, 37, 173, 0.3), transparent),
+    radial-gradient(1px 1px at 520px 60px, rgba(77, 37, 173, 0.45), transparent),
+    radial-gradient(2px 2px at 600px 180px, rgba(77, 37, 173, 0.35), transparent),
+    radial-gradient(1px 1px at 100px 200px, rgba(77, 37, 173, 0.4), transparent),
+    radial-gradient(2px 2px at 250px 250px, rgba(77, 37, 173, 0.3), transparent),
+    radial-gradient(1px 1px at 400px 300px, rgba(77, 37, 173, 0.45), transparent),
+    radial-gradient(2px 2px at 550px 280px, rgba(77, 37, 173, 0.35), transparent),
+    radial-gradient(1px 1px at 700px 350px, rgba(77, 37, 173, 0.4), transparent),
+    radial-gradient(2px 2px at 150px 400px, rgba(77, 37, 173, 0.3), transparent),
+    radial-gradient(1px 1px at 350px 450px, rgba(77, 37, 173, 0.45), transparent),
+    radial-gradient(2px 2px at 500px 500px, rgba(77, 37, 173, 0.35), transparent),
+    radial-gradient(1px 1px at 650px 420px, rgba(77, 37, 173, 0.4), transparent),
+    radial-gradient(2px 2px at 800px 380px, rgba(77, 37, 173, 0.3), transparent);
+}
+
+/* Twinkling stars animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.bg-starfield::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 120px 80px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 280px 180px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 480px 320px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 620px 120px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 750px 280px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 180px 420px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 380px 520px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 550px 450px, rgba(255, 255, 255, 0.6), transparent);
+  background-size: 900px 600px;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+html[data-theme="light"] .bg-starfield::after {
+  opacity: 0.4;
+  animation: twinkle 6s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT OVERLAY — adapts per theme
+   ═══════════════════════════════════════════════════════════════ */
+
+.bg-ray-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--color-ray-900) 0%,
+    var(--color-ray-950) 30%,
+    var(--color-ray-950) 70%,
+    var(--color-ray-900) 100%
+  );
+}
+
+html[data-theme="light"] .bg-ray-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--color-ray-100) 0%,
+    var(--color-ray-50) 30%,
+    var(--color-ray-50) 70%,
+    var(--color-ray-100) 100%
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+   ═══════════════════════════════════════════════════════════════ */
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background: var(--bg-card);
+  color: var(--text-glow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--shadow-glow);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+.text-gold-shimmer {
+  background: linear-gradient(90deg, var(--color-solar) 0%, var(--color-solar-soft) 50%, var(--color-solar) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 8s linear infinite;
+}
+
+html[data-theme="light"] .text-gold-shimmer {
+  background: linear-gradient(90deg, var(--color-ray-600) 0%, var(--color-ray-400) 50%, var(--color-ray-600) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.breathing-glow {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Card / glass surfaces */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR & SELECTION
+   ═══════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ray-700);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ray-500);
+}
+
+::selection {
+  background: rgba(123, 82, 218, 0.35);
+  color: var(--text-primary);
+}
+
+html[data-theme="light"] ::selection {
+  background: rgba(77, 37, 173, 0.2);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-ray-400);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,43 +1,24 @@
-# Astro Starter Kit: Minimal
+# Heartlightia 💗
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A Venusian Earth-loving space where beings co-create with authentic joy and conscious awareness in sovereign interdependent communion with the Rays of ALL.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech Stack
 
-## 🚀 Project Structure
+- Astro + Tailwind CSS v4
+- Alice + Inter fonts
+- Vercel deployment
 
-Inside of your Astro project, you'll see the following folders and files:
+## Commands
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+| Command | Action |
+|:---|:---|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start dev server at localhost:4321 |
+| `npm run build` | Build production site to ./dist/ |
+| `npm run preview` | Preview the build locally |
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Sacred Palette
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Violet, Green, Gold, Rose Gold, Magenta. Green as the background hue.
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Heartlight's Greatest and Highest Good 💗🌎☤💎🌈💫🪬∞
