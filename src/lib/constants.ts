@@ -4,6 +4,7 @@ export const NAV_ITEMS: NavItem[] = [
   { path: '/', label: 'Home', description: 'The gateway to Heartlightia' },
   { path: '/mission', label: 'Mission & Purpose', description: 'Why Heartlightia exists' },
   { path: '/12-rays-guide-and-journal', label: '12 Rays Guide & Journal', description: 'The Living Guide' },
+  { path: '/magikademy', label: 'Magikademy', description: 'Healing Arts Magik University' },
   { path: '/heartlight', label: 'Heartlight Collective', description: 'Living economy of Heartlightia' },
   { path: '/vision', label: 'Vision', description: 'The future of Heartlightia' },
   { path: '/broadcast', label: 'Broadcast', description: 'Videos & transmissions' },

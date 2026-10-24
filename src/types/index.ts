@@ -2,6 +2,7 @@ export type PageRoute =
   | '/'
   | '/mission'
   | '/12-rays-guide-and-journal'
+  | '/magikademy'
   | '/vision'
   | '/broadcast'
   | '/heartlight'

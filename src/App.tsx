@@ -12,6 +12,7 @@ const Vision    = lazy(() => import('./pages/Vision').then(m => ({ default: m.Vi
 const Broadcast = lazy(() => import('./pages/Broadcast').then(m => ({ default: m.Broadcast })));
 const HeartlightCollective = lazy(() => import('./pages/HeartlightCollective').then(m => ({ default: m.HeartlightCollective })));
 const AtlasOfAll = lazy(() => import('./pages/AtlasOfAll').then(m => ({ default: m.AtlasOfAll })));
+const Magikademy = lazy(() => import('./pages/Magikademy').then(m => ({ default: m.Magikademy })));
 const Ledger    = lazy(() => import('./pages/Ledger').then(m => ({ default: m.Ledger })));
 const Codes      = lazy(() => import('./pages/Codes').then(m => ({ default: m.Codes })));
 const Connect   = lazy(() => import('./pages/Connect').then(m => ({ default: m.Connect })));
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/mission" element={<Mission />} />
         <Route path="/12-rays-guide-and-journal" element={<AtlasOfAll />} />
+        <Route path="/magikademy" element={<Magikademy />} />
         <Route path="/vision" element={<Vision />} />
         <Route path="/broadcast" element={<Broadcast />} />
         <Route path="/heartlight" element={<HeartlightCollective />} />
